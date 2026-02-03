@@ -4,6 +4,11 @@
  * Odjava korisnika iz sustava
  */
 
+// Start session FIRST before logout
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Include dependencies
 require_once('lib/db_connection.php');
 require_once('lib/SessionManager.php');
@@ -14,6 +19,9 @@ $sessionManager = new SessionManager($connection);
 
 // Logout user (deletes session and remember token)
 $sessionManager->logout();
+
+// Close database connection
+$connection->close();
 
 // Redirect to login page with success message
 header('Location: login.php?message=Uspješno ste se odjavili');

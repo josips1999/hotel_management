@@ -1,0 +1,4 @@
+[2026-02-03 19:25:49] FAILED - To: jskoko53@gmail.com - Subject: Potvrda registracije - Hotel Management System
+[2026-02-03 19:33:40] SUCCESS - To: ivanaviigo@gmail.com - Subject: Potvrda registracije - Hotel Management System
+[2026-02-03 19:39:02] SUCCESS - To: ivanaviigo@gmail.com - Subject: Potvrda registracije - Hotel Management System
+[2026-02-03 19:49:23] SUCCESS - To: jskoko53@gmail.com - Subject: Potvrda registracije - Hotel Management System

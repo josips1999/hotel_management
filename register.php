@@ -14,6 +14,13 @@ require_once('lib/db_connection.php');
 require_once('lib/https_checker.php');
 require_once('lib/CSRFToken.php');
 
+// Check if user is already logged in
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    // User is already logged in, redirect to dashboard
+    header('Location: index.php');
+    exit;
+}
+
 // Force HTTPS for registration page (on production)
 HTTPSChecker::requireHTTPSForAuth();
 ?>
@@ -251,13 +258,10 @@ HTTPSChecker::requireHTTPSForAuth();
             
             <!-- Google reCAPTCHA v2 -->
             <div class="mb-3">
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div class="g-recaptcha" data-sitekey="6LcDoV8sAAAAAH1LE1C9G4VG8Am6qwFc9CUo7aXI"></div>
                 <div id="recaptchaFeedback" class="invalid-feedback" style="display: none;">
                     Molimo potvrdite da niste robot
                 </div>
-                <small class="form-text text-muted">
-                    Test Site Key - zamijeni sa stvarnim ključem za produkciju
-                </small>
             </div>
             
             <!-- Submit Button -->
@@ -447,7 +451,7 @@ HTTPSChecker::requireHTTPSForAuth();
                 // Check both username and email
                 Promise.all([
                     checkEmailAvailability(emailInput.value),
-                    checkUsernameAvailability(usernameInput.value)
+                    checkUsernameAvailabilityPromise(usernameInput.value)
                 ]).then(results => {
                     const emailResponse = results[0];
                     const usernameResponse = results[1];
@@ -566,6 +570,15 @@ HTTPSChecker::requireHTTPSForAuth();
         function checkEmailAvailability(email) {
             return fetch(`api/check_email.php?email=${encodeURIComponent(email)}`)
                 .then(response => response.json());
+        }
+        
+        // Wrapper for checkUsernameAvailability to return Promise
+        function checkUsernameAvailabilityPromise(username) {
+            return new Promise((resolve, reject) => {
+                checkUsernameAvailability(username, (response) => {
+                    resolve(response);
+                });
+            });
         }
     </script>
 </body>

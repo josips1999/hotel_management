@@ -9,6 +9,9 @@ header('Content-Type: application/json');
 // Include dependencies
 require_once('../lib/db_connection.php');
 
+// Select database
+mysqli_select_db($connection, 'hotel_management');
+
 // Response array
 $response = [
     'success' => false,

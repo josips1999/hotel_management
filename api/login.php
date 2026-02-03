@@ -5,12 +5,12 @@
  * Protected with CSRF token (Requirement 33)
  */
 
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Start output buffering FIRST
 ob_start();
-
-// Suppress errors
-error_reporting(E_ERROR | E_PARSE);
-ini_set('display_errors', 0);
 
 // Start session BEFORE any output
 if (session_status() === PHP_SESSION_NONE) {

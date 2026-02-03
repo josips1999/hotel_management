@@ -14,6 +14,12 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once('lib/https_checker.php');
 require_once('lib/CSRFToken.php');
 
+// Check if user is already logged in
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    // User is already logged in, redirect to dashboard
+    header('Location: index.php');
+    exit;
+}
 
 // Force HTTPS for login page (on production)
 HTTPSChecker::requireHTTPSForAuth();
@@ -233,7 +239,7 @@ HTTPSChecker::requireHTTPSForAuth();
             
             <!-- Google reCAPTCHA v2 -->
             <div class="mb-3">
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div class="g-recaptcha" data-sitekey="6LcDoV8sAAAAAH1LE1C9G4VG8Am6qwFc9CUo7aXI"></div>
                 <div id="recaptchaFeedback" class="invalid-feedback" style="display: none;">
                     Molimo potvrdite da niste robot
                 </div>
