@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Autoru - Hotel Management System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .author-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .author-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .author-photo {
+            width: 200px;
+            height: 250px;
+            border: 5px solid white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            background: white;
+        }
+        .author-body {
+            padding: 40px;
+        }
+        .info-row {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        .info-content {
+            flex-grow: 1;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 500;
+        }
+        .project-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .project-info h4 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .project-info p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .contact-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="author-card">
+            <!-- Header -->
+            <div class="author-header">
+                <img src="assets/images/author-photo.jpg" alt="Fotografija autora" class="author-photo" 
+                     onerror="this.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<i class=\'bi bi-person-circle\' style=\'font-size: 5rem; color: white;\'></i>';">
+                <h1 class="mb-2">Ime i Prezime Autora</h1>
+                <p class="lead mb-0">Student Računarstva i Informatike</p>
+            </div>
+
+            <!-- Body -->
+            <div class="author-body">
+                <!-- Personal Information -->
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">OIB (Osobni Identifikacijski Broj)</div>
+                        <div class="info-value">12345678901</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="bi bi-journal-code"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Broj Indeksa</div>
+                        <div class="info-value">0246012345</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="bi bi-envelope-at"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Email Adresa</div>
+                        <div class="info-value">
+                            <a href="mailto:student@example.com" style="color: #667eea; text-decoration: none;">
+                                student@example.com
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Ustanova</div>
+                        <div class="info-value">Veleučilište / Fakultet</div>
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-label">Studij</div>
+                        <div class="info-value">Računarstvo / Informatika</div>
+                    </div>
+                </div>
+
+                <!-- Project Information -->
+                <div class="project-info">
+                    <h4><i class="bi bi-laptop-fill"></i> Projektni Rad</h4>
+                    <p><strong>Naziv projekta:</strong> Hotel Management System</p>
+                    <p><strong>Kolegij:</strong> Programiranje za Web</p>
+                    <p><strong>Akademska godina:</strong> 2025/2026</p>
+                    <p><strong>Datum izrade:</strong> Siječanj 2026</p>
+                    <p><strong>Tehnologije:</strong> PHP, MySQL, HTML5, CSS3, JavaScript, Bootstrap, AJAX</p>
+                    <p><strong>Opis:</strong> Sustav za upravljanje hotelima s MVC arhitekturom, CRUD operacijama, 
+                    korisničkim upravljanjem, sigurnosnim zaštitama (CSRF, XSS, SQL Injection), 
+                    SEO optimizacijom, RSS feedom, audit logom i potpunim responsive dizajnom.</p>
+                </div>
+
+                <!-- Contact Links -->
+                <div class="contact-links">
+                    <a href="index.php" class="contact-link">
+                        <i class="bi bi-house-door"></i>
+                        <span>Početna</span>
+                    </a>
+                    <a href="dokumentacija.html" class="contact-link">
+                        <i class="bi bi-file-text"></i>
+                        <span>Dokumentacija</span>
+                    </a>
+                    <a href="security_report.html" class="contact-link">
+                        <i class="bi bi-shield-check"></i>
+                        <span>Sigurnosni Izvještaj</span>
+                    </a>
+                    <a href="mailto:student@example.com" class="contact-link">
+                        <i class="bi bi-envelope"></i>
+                        <span>Kontakt</span>
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="text-center mt-4">
+                    <a href="index.php" class="btn btn-custom btn-lg">
+                        <i class="bi bi-arrow-left-circle"></i> Povratak na Sustav
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-4">
+            <p class="text-white">
+                <i class="bi bi-c-circle"></i> 2026 Hotel Management System - Završni Projektni Rad
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

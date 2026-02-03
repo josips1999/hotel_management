@@ -1,0 +1,40 @@
+# Configuration files with sensitive data
+config.php
+lib/config.php
+lib/recaptcha_config.php
+
+# Database backups
+backups/
+*.sql.gz
+*.sql.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+error_log
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Recovery script (already used)
+recover_project.ps1
+
+# PHP session files
+sessions/
+
+# Uploaded files (if any)
+uploads/
+temp/

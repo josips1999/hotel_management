@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigurnosni Izvještaj - Zahtjevi 32 & 33</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .report-header {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .requirement-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .status-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-complete {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-progress {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .checklist-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        .file-list {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .code-sample {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .code-sample pre {
+            margin: 0;
+            color: #f8f8f2;
+        }
+        .code-sample code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="report-header text-center">
+            <h1 class="mb-3">
+                <i class="bi bi-shield-check text-success"></i>
+                Sigurnosni Izvještaj
+            </h1>
+            <h4 class="text-muted mb-4">Zahtjevi 32 & 33: SEO i Sigurnosne Zaštite</h4>
+            <p class="lead">Kompletna implementacija sigurnosnih mehanizama i SEO optimizacije</p>
+            <hr>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h3 class="text-primary">100%</h3>
+                    <p class="text-muted">CSRF Zaštita</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-success">100%</h3>
+                    <p class="text-muted">XSS Zaštita</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-info">100%</h3>
+                    <p class="text-muted">SEO Optimizacija</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requirement 32: SEO -->
+        <div class="requirement-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3><i class="bi bi-search text-info"></i> Zahtjev 32: SEO Optimizacija</h3>
+                <span class="status-badge status-complete">
+                    <i class="bi bi-check-circle"></i> Završeno
+                </span>
+            </div>
+            
+            <p class="text-muted">
+                "Korištenje poveznica optimiziranih za tražilice u cijelom projektu (SEO – Search Engine Optimization)."
+            </p>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-code-slash"></i> Implementirane Komponente:</h5>
+            
+            <div class="file-list">
+                <strong><i class="bi bi-file-earmark-code"></i> lib/SEOHelper.php</strong>
+                <ul class="mt-2">
+                    <li><code>createSlug()</code> - Pretvaranje naziva u SEO URL-friendly slug</li>
+                    <li><code>hotelUrl()</code> - Generiranje SEO URL-a za hotel (/hotel/123/naziv-hotela)</li>
+                    <li><code>hotelUrlFull()</code> - Potpuni URL s domenom</li>
+                    <li><code>escape()</code> - XSS zaštita (wrapper za htmlspecialchars)</li>
+                    <li><code>createPageTitle()</code> - SEO optimizirani naslovi stranica</li>
+                    <li><code>createMetaDescription()</code> - Meta opisi za tražilice</li>
+                </ul>
+            </div>
+
+            <div class="file-list">
+                <strong><i class="bi bi-file-earmark-code"></i> lib/Router.php</strong>
+                <ul class="mt-2">
+                    <li>Pattern matching za SEO URL-ove</li>
+                    <li>Podrška za: /hotel/{id}/{slug}, /search/{query}, /city/{name}, /county/{name}</li>
+                </ul>
+            </div>
+
+            <div class="file-list">
+                <strong><i class="bi bi-gear"></i> .htaccess</strong>
+                <ul class="mt-2">
+                    <li>Apache Rewrite pravila za SEO URL-ove</li>
+                    <li>RewriteEngine aktiviran</li>
+                    <li>Mapiranje SEO URL-a na prave stranice</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-link-45deg"></i> SEO URL Primjeri:</h5>
+            
+            <div class="code-sample">
+                <pre><code>// Stari format:
+view.php?id=5
+
+// Novi SEO format:
+/hotel/5/grand-hotel-zagreb
+
+// Drugi primjeri:
+/search/zagreb
+/city/split
+/county/zagrebacka
+/page/2</code></pre>
+            </div>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-check2-square"></i> Implementirano u Stranicama:</h5>
+            
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>view.php</strong> - Kreirana nova stranica za detalje hotela s SEO podrškom
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>index.php</strong> - Dodani SEO linkovi u hotel listingu
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>dashboard.php</strong> - SEO linkovi u "Nedavno Dodani Hoteli"
+            </div>
+        </div>
+
+        <!-- Requirement 33: Security -->
+        <div class="requirement-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3><i class="bi bi-shield-fill-check text-success"></i> Zahtjev 33: Sigurnosne Zaštite</h3>
+                <span class="status-badge status-complete">
+                    <i class="bi bi-check-circle"></i> Završeno
+                </span>
+            </div>
+
+            <p class="text-muted">
+                "Zaštita od XSS napada, CSRF napada i SQL injection napada."
+            </p>
+
+            <!-- CSRF Protection -->
+            <h4 class="mt-4 mb-3 text-primary">
+                <i class="bi bi-lock-fill"></i> 1. CSRF Zaštita (Cross-Site Request Forgery)
+            </h4>
+
+            <div class="file-list">
+                <strong><i class="bi bi-file-earmark-code"></i> lib/CSRFToken.php</strong>
+                <ul class="mt-2">
+                    <li><code>generate()</code> - Generiranje 32-byte random tokena</li>
+                    <li><code>validate()</code> - Timing-safe validacija tokena</li>
+                    <li><code>getField()</code> - HTML hidden input field</li>
+                    <li><code>verifyPost()</code> - POST request validacija</li>
+                    <li>Token expiry: 1 sat</li>
+                    <li>Session storage sigurnost</li>
+                </ul>
+            </div>
+
+            <h5 class="mt-3 mb-2"><i class="bi bi-journal-check"></i> Forme s CSRF Tokenom (9/9):</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> login.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> register.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> contact.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> index.php (Add Hotel)
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> index.php (Edit Hotel)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> system_settings.php (AJAX)
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> user_management.php (AJAX)
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> database_backup.php (Backup)
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> database_backup.php (Restore)
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-3 mb-2"><i class="bi bi-server"></i> API Endpointi s CSRF Validacijom (9/9):</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/login.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/register_user.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/add_hotel.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/update_hotel.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/delete_hotel.php
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/contact_submit.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/save_setting.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/user_action.php
+                    </div>
+                    <div class="checklist-item">
+                        <i class="bi bi-check-circle-fill text-success"></i> api/backup_database.php
+                    </div>
+                </div>
+            </div>
+
+            <h5 class="mt-4 mb-3"><i class="bi bi-code-square"></i> CSRF Implementacija - Primjeri:</h5>
+
+            <p class="mb-2"><strong>Pattern 1: Form POST Submission</strong></p>
+            <div class="code-sample">
+                <pre><code>// U PHP stranici:
+require_once('lib/CSRFToken.php');
+
+// U HTML formi:
+&lt;form method="POST"&gt;
+    &lt;?php echo CSRFToken::getField(); ?&gt;
+    &lt;!-- ostala polja --&gt;
+&lt;/form&gt;
+
+// U API endpointu:
+require_once('../lib/CSRFToken.php');
+CSRFToken::verifyPost(); // 403 ako nije validan</code></pre>
+            </div>
+
+            <p class="mb-2 mt-3"><strong>Pattern 2: AJAX JSON Request</strong></p>
+            <div class="code-sample">
+                <pre><code>// JavaScript:
+const csrfToken = '&lt;?php echo CSRFToken::get(); ?&gt;';
+
+fetch('api/save_setting.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        key: 'value',
+        csrf_token: csrfToken
+    })
+});
+
+// API validacija:
+$input = json_decode(file_get_contents('php://input'), true);
+$csrfToken = $input['csrf_token'] ?? '';
+if (!CSRFToken::validate($csrfToken)) {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'message' => 'CSRF validation failed']);
+    exit;
+}</code></pre>
+            </div>
+
+            <!-- XSS Protection -->
+            <h4 class="mt-5 mb-3 text-warning">
+                <i class="bi bi-code-slash"></i> 2. XSS Zaštita (Cross-Site Scripting)
+            </h4>
+
+            <p>Implementacija: <code>htmlspecialchars($var, ENT_QUOTES, 'UTF-8')</code></p>
+
+            <h5 class="mt-3 mb-2"><i class="bi bi-file-check"></i> Stranice s XSS Zaštitom:</h5>
+            
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>index.php</strong> - Naziv, adresa, grad, županija (htmlspecialchars)
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>view.php</strong> - Svi hotel podatci escape-ani (SEOHelper::escape)
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>dashboard.php</strong> - Naziv, grad (htmlspecialchars)
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>user_management.php</strong> - Username, email (htmlspecialchars)
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                <strong>audit_log.php</strong> - ID, table_name, username, IP (htmlspecialchars)
+            </div>
+
+            <div class="code-sample mt-3">
+                <pre><code>// Primjer iz index.php:
+echo htmlspecialchars($hotel['naziv'], ENT_QUOTES, 'UTF-8');
+
+// SEOHelper wrapper:
+echo SEOHelper::escape($hotel['naziv']);
+
+// Rezultat: &lt;script&gt;alert('XSS')&lt;/script&gt; → prikazano kao tekst, ne izvršava se</code></pre>
+            </div>
+
+            <!-- SQL Injection Protection -->
+            <h4 class="mt-5 mb-3 text-danger">
+                <i class="bi bi-database-fill-lock"></i> 3. SQL Injection Zaštita
+            </h4>
+
+            <p>Implementacija: <strong>Prepared Statements (mysqli)</strong></p>
+
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Svi database upiti koriste prepared statements
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Parameter binding s bind_param()
+            </div>
+            <div class="checklist-item">
+                <i class="bi bi-check-circle-fill text-success"></i>
+                Nema direktnog umetanja varijabli u SQL
+            </div>
+
+            <div class="code-sample mt-3">
+                <pre><code>// SIGURNO (Prepared Statement):
+$stmt = $conn->prepare("SELECT * FROM hotels WHERE id = ?");
+$stmt->bind_param("i", $hotelId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// NESIGURNO (NIKAD NE KORISTITI):
+$query = "SELECT * FROM hotels WHERE id = $hotelId"; // ❌</code></pre>
+            </div>
+        </div>
+
+        <!-- Testing Guide -->
+        <div class="requirement-card">
+            <h3 class="mb-4"><i class="bi bi-clipboard-check text-info"></i> Testiranje Implementacije</h3>
+
+            <h5 class="mb-3">1. CSRF Testiranje:</h5>
+            <div class="file-list">
+                <ol>
+                    <li>Otvorite Developer Tools (F12) → Network tab</li>
+                    <li>Registrirajte novog korisnika → Provjerite POST request za <code>csrf_token</code></li>
+                    <li>Dodajte hotel → Provjerite da se token šalje</li>
+                    <li>Pokušajte POST bez tokena → Očekuje se <strong>403 Forbidden</strong> error</li>
+                </ol>
+            </div>
+
+            <h5 class="mb-3 mt-4">2. XSS Testiranje:</h5>
+            <div class="file-list">
+                <ol>
+                    <li>Pokušajte dodati hotel s nazivom: <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></li>
+                    <li>Pregledajte listing → Script se NE smije izvršiti</li>
+                    <li>Tekst treba biti prikazan kao običan tekst</li>
+                    <li>U Developer Tools → Elements → Provjerite da je escape-ano u HTML</li>
+                </ol>
+            </div>
+
+            <h5 class="mb-3 mt-4">3. SEO URL Testiranje:</h5>
+            <div class="file-list">
+                <ol>
+                    <li>Kliknite "Detalji" na bilo koji hotel u index.php</li>
+                    <li>URL treba biti: <code>/hotel_managment/hotel/1/naziv-hotela</code></li>
+                    <li>Stranica treba se učitati ispravno</li>
+                    <li>Provjerite da breadcrumbs i navigation rade</li>
+                </ol>
+            </div>
+
+            <h5 class="mb-3 mt-4">4. SQL Injection Testiranje:</h5>
+            <div class="file-list">
+                <ol>
+                    <li>Pokušajte login s korisničkim imenom: <code>' OR '1'='1</code></li>
+                    <li>Login NE smije uspjeti</li>
+                    <li>Provjerite database log → Nema error-a</li>
+                    <li>Prepared statements sprječavaju injection</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="requirement-card bg-light">
+            <h3 class="mb-4 text-center">
+                <i class="bi bi-trophy-fill text-warning"></i> Sažetak Implementacije
+            </h3>
+            
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <h2 class="text-primary">18</h2>
+                        <p class="text-muted mb-0">Zaštićenih<br>Formi/API-ja</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <h2 class="text-success">5</h2>
+                        <p class="text-muted mb-0">Stranica s<br>XSS Zaštitom</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <h2 class="text-info">3</h2>
+                        <p class="text-muted mb-0">SEO URL<br>Implementacija</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3">
+                        <h2 class="text-warning">100%</h2>
+                        <p class="text-muted mb-0">Prepared<br>Statements</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="alert alert-success mb-0">
+                <h5><i class="bi bi-check-circle-fill"></i> Zahtjevi 32 & 33: Potpuno Implementirani</h5>
+                <p class="mb-0">
+                    Projekt je sada zaštićen od CSRF, XSS i SQL Injection napada, 
+                    s potpunom SEO optimizacijom URL-ova.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-4 mb-3">
+            <p class="text-white">
+                <i class="bi bi-calendar"></i> Datum implementacije: <?php echo date('d.m.Y'); ?>
+            </p>
+            <a href="index.php" class="btn btn-light btn-lg">
+                <i class="bi bi-house-door"></i> Povratak na Početnu
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

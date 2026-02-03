@@ -1,0 +1,505 @@
+/**
+ * Mobile-Friendly Table Layouts
+ * Responsive table designs for small screens using @media queries
+ */
+
+/* ============================================================================
+   DEFAULT TABLE STYLES (Desktop)
+   ============================================================================ */
+
+.responsive-table-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.responsive-table thead {
+    background: #2d3748;
+    color: white;
+}
+
+.responsive-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.responsive-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.responsive-table tr:last-child td {
+    border-bottom: none;
+}
+
+.responsive-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* ============================================================================
+   MOBILE TABLE APPROACH 1: HORIZONTAL SCROLL
+   Simple horizontal scrolling for narrow screens
+   ============================================================================ */
+
+.table-scroll-mobile {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+@media (max-width: 767px) {
+    .table-scroll-mobile {
+        display: block;
+        width: 100%;
+    }
+    
+    .table-scroll-mobile table {
+        min-width: 600px; /* Prevent table from shrinking too much */
+    }
+    
+    /* Scroll indicator shadow */
+    .table-scroll-mobile::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 20px;
+        background: linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+        pointer-events: none;
+    }
+}
+
+/* ============================================================================
+   MOBILE TABLE APPROACH 2: STACKED CARDS
+   Convert table rows to cards on mobile
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .table-cards-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* Hide table header on mobile */
+    .table-cards-mobile thead {
+        display: none;
+    }
+    
+    /* Convert table body to flex container */
+    .table-cards-mobile tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* Each row becomes a card */
+    .table-cards-mobile tr {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Each cell shows label + value */
+    .table-cards-mobile td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .table-cards-mobile td:last-child {
+        border-bottom: none;
+    }
+    
+    /* Add data labels from data-label attribute */
+    .table-cards-mobile td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #667eea;
+        margin-right: 1rem;
+    }
+    
+    /* Action buttons full width */
+    .table-cards-mobile td .btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .table-cards-mobile td .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ============================================================================
+   MOBILE TABLE APPROACH 3: GRID LAYOUT
+   Convert table to grid on mobile
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .table-grid-mobile {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .table-grid-mobile thead {
+        display: none;
+    }
+    
+    .table-grid-mobile tbody {
+        display: contents;
+    }
+    
+    .table-grid-mobile tr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        background: white;
+        padding: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .table-grid-mobile td {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+        border: none;
+    }
+    
+    .table-grid-mobile td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #667eea;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    /* Span full width for actions */
+    .table-grid-mobile td.actions-cell {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ============================================================================
+   MOBILE TABLE APPROACH 4: ACCORDION/EXPANDABLE
+   Show summary on mobile, expand for details
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .table-accordion-mobile thead {
+        display: none;
+    }
+    
+    .table-accordion-mobile tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .table-accordion-mobile tr {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    /* First cell is always visible (summary) */
+    .table-accordion-mobile td:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .table-accordion-mobile td:first-child::after {
+        content: "▼";
+        font-size: 0.8rem;
+        transition: transform 0.3s;
+    }
+    
+    /* Other cells hidden by default */
+    .table-accordion-mobile td:not(:first-child) {
+        display: none;
+        padding: 0.75rem 1rem;
+        border-top: 1px solid #dee2e6;
+    }
+    
+    /* Show all cells when row is expanded */
+    .table-accordion-mobile tr.expanded td:not(:first-child) {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .table-accordion-mobile tr.expanded td:first-child::after {
+        transform: rotate(180deg);
+    }
+    
+    .table-accordion-mobile td:not(:first-child)::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #667eea;
+    }
+}
+
+/* ============================================================================
+   MOBILE TABLE APPROACH 5: KEY-VALUE PAIRS
+   Each row shows as definition list
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .table-keyvalue-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .table-keyvalue-mobile thead {
+        display: none;
+    }
+    
+    .table-keyvalue-mobile tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .table-keyvalue-mobile tr {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .table-keyvalue-mobile td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .table-keyvalue-mobile td:last-child {
+        border-bottom: none;
+    }
+    
+    .table-keyvalue-mobile td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #495057;
+    }
+}
+
+/* ============================================================================
+   TABLET OPTIMIZATIONS (768px - 991px)
+   ============================================================================ */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Reduce padding on tablets */
+    .responsive-table th,
+    .responsive-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Hide less important columns */
+    .responsive-table .hide-tablet {
+        display: none;
+    }
+    
+    /* Allow some horizontal scroll if needed */
+    .responsive-table-wrapper {
+        overflow-x: auto;
+    }
+}
+
+/* ============================================================================
+   PRINT TABLE STYLES
+   ============================================================================ */
+
+@media print {
+    .responsive-table {
+        font-size: 10pt;
+    }
+    
+    .responsive-table thead {
+        background: #f0f0f0 !important;
+        color: black !important;
+    }
+    
+    .responsive-table th,
+    .responsive-table td {
+        padding: 0.3cm;
+        border: 1px solid #000;
+    }
+    
+    /* Show all columns on print */
+    .hide-tablet,
+    .hide-mobile {
+        display: table-cell !important;
+    }
+    
+    /* Hide action buttons */
+    .btn,
+    .btn-group {
+        display: none !important;
+    }
+}
+
+/* ============================================================================
+   SPECIAL: HOTEL TABLE MOBILE LAYOUT
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .hotels-table-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hotels-table-mobile thead {
+        display: none;
+    }
+    
+    .hotels-table-mobile tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hotels-table-mobile tr {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* First cell: Hotel name header */
+    .hotels-table-mobile td:nth-child(1),
+    .hotels-table-mobile td:nth-child(2) {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    
+    .hotels-table-mobile td:nth-child(1) {
+        justify-content: center;
+        min-width: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem;
+    }
+    
+    /* Other cells: Info rows */
+    .hotels-table-mobile td:nth-child(n+3) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .hotels-table-mobile td:last-child {
+        border-bottom: none;
+        padding: 1.5rem;
+        background: #f8f9fa;
+    }
+    
+    .hotels-table-mobile td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #667eea;
+    }
+    
+    /* Action buttons */
+    .hotels-table-mobile .btn-group {
+        flex-direction: row;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .hotels-table-mobile .btn {
+        flex: 1;
+    }
+}
+
+/* ============================================================================
+   ORIENTATION-SPECIFIC TABLE ADJUSTMENTS
+   ============================================================================ */
+
+/* Portrait: Stack everything */
+@media (max-width: 767px) and (orientation: portrait) {
+    .table-cards-mobile td {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .table-cards-mobile td::before {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Landscape: Use more horizontal space */
+@media (max-width: 767px) and (orientation: landscape) {
+    .table-grid-mobile tr {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .table-cards-mobile td {
+        flex-direction: row;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY: HIGH CONTRAST MODE
+   ============================================================================ */
+
+@media (prefers-contrast: high) {
+    .responsive-table {
+        border: 2px solid #000;
+    }
+    
+    .responsive-table th,
+    .responsive-table td {
+        border: 1px solid #000;
+    }
+    
+    .responsive-table thead {
+        background: #000 !important;
+        color: #fff !important;
+    }
+}

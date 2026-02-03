@@ -1,0 +1,684 @@
+/**
+ * Responsive Media Queries & Mobile Table Adaptation
+ * CSS @media queries for screen resolution, width, orientation, and print
+ */
+
+/* ============================================================================
+   BASE RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+
+/* Extra Small Devices (Phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Small Devices (Phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .grid-cols-4,
+    .grid-cols-5,
+    .grid-cols-6 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Extra Large Devices (Large Desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* ============================================================================
+   ORIENTATION MEDIA QUERIES
+   ============================================================================ */
+
+/* Portrait Orientation (vertikalno) */
+@media (orientation: portrait) {
+    .orientation-indicator::before {
+        content: "📱 Portrait";
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem;
+        background: #e0e7ff;
+        color: #667eea;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Stack everything vertically in portrait */
+    .flex-row-desktop {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hotels-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Landscape Orientation (horizontalno) */
+@media (orientation: landscape) {
+    .orientation-indicator::before {
+        content: "🖥️ Landscape";
+        display: flex;
+        justify-content: center;
+        padding: 0.5rem;
+        background: #d1fae5;
+        color: #10b981;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Optimize for wider screens */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ============================================================================
+   MOBILE DEVICES (max-width: 768px)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    /* Navigation */
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .navbar-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .navbar-menu a {
+        justify-content: center;
+    }
+    
+    /* Grid to Single Column */
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4,
+    .grid-cols-5,
+    .grid-cols-6 {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+    
+    .hotels-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Cards */
+    .card-header,
+    .card-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .hotel-card-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hotel-actions {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Forms */
+    .form-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    /* Buttons */
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+    }
+    
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    /* Footer */
+    .footer {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================================================
+   MOBILE TABLE ADAPTATION (Card-Based View)
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    /* Hide traditional table on mobile */
+    table.responsive-table {
+        display: none;
+    }
+    
+    /* Show card-based mobile view */
+    .mobile-table-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .mobile-table-card {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        gap: 0.75rem;
+    }
+    
+    .mobile-table-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #667eea;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #667eea;
+    }
+    
+    .mobile-table-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .mobile-table-row:last-child {
+        border-bottom: none;
+    }
+    
+    .mobile-table-label {
+        font-weight: 600;
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+    
+    .mobile-table-value {
+        font-weight: 500;
+        color: #212529;
+        text-align: right;
+    }
+    
+    .mobile-table-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .mobile-table-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Desktop: Show table, hide mobile cards */
+@media (min-width: 769px) {
+    table.responsive-table {
+        display: table;
+        width: 100%;
+    }
+    
+    .mobile-table-cards {
+        display: none;
+    }
+}
+
+/* ============================================================================
+   TABLET OPTIMIZATION (768px - 1024px)
+   ============================================================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    /* Two-column layouts */
+    .hotels-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Compact navigation */
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .navbar-menu {
+        gap: 0.75rem;
+    }
+    
+    .navbar-menu a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Scrollable tables */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table.responsive-table {
+        min-width: 600px;
+    }
+}
+
+/* ============================================================================
+   SMALL PHONE SCREENS (max-width: 375px)
+   ============================================================================ */
+
+@media (max-width: 375px) {
+    body {
+        font-size: 0.875rem;
+    }
+    
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.1rem; }
+    
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+    
+    .stat-card-value {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .modal-content {
+        width: 98%;
+    }
+}
+
+/* ============================================================================
+   LARGE DESKTOP SCREENS (min-width: 1400px)
+   ============================================================================ */
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    .main-container {
+        max-width: 1400px;
+    }
+    
+    /* More columns on large screens */
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .hotels-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Larger fonts */
+    body {
+        font-size: 1.1rem;
+    }
+    
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+}
+
+/* ============================================================================
+   HIGH RESOLUTION DISPLAYS (Retina, 4K)
+   ============================================================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Sharper borders and shadows for high-DPI */
+    .card,
+    .hotel-card,
+    .stat-card {
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Thinner borders look better on Retina */
+    .form-control {
+        border-width: 1px;
+    }
+}
+
+/* ============================================================================
+   TOUCH DEVICE OPTIMIZATION
+   ============================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger tap targets for touch devices */
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .navbar-menu a {
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .hotel-card:hover {
+        transform: none;
+    }
+    
+    .btn:hover {
+        transform: none;
+    }
+    
+    /* Increase spacing for easier tapping */
+    .btn-group {
+        gap: 1rem;
+    }
+}
+
+/* ============================================================================
+   PRINT STYLES (@media print)
+   ============================================================================ */
+
+@media print {
+    /* Hide non-printable elements */
+    .navbar,
+    .navbar-menu,
+    .btn,
+    .hotel-actions,
+    .mobile-table-actions,
+    .card-footer,
+    .footer,
+    .pagination {
+        display: none !important;
+    }
+    
+    /* Optimize for print */
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+    }
+    
+    .container,
+    .main-container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    /* Remove shadows and gradients */
+    .card,
+    .hotel-card,
+    .stat-card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
+    }
+    
+    .card-header,
+    .hotel-card-header {
+        background: white !important;
+        color: black !important;
+        border-bottom: 2px solid black;
+    }
+    
+    /* Single column for print */
+    .hotels-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Ensure tables print properly */
+    table.responsive-table {
+        display: table !important;
+        page-break-inside: avoid;
+    }
+    
+    .mobile-table-cards {
+        display: none !important;
+    }
+    
+    /* Page breaks */
+    .hotel-card,
+    .stat-card {
+        page-break-inside: avoid;
+    }
+    
+    /* Show URLs for links */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+    
+    /* Hide icons that don't print well */
+    .bi {
+        display: none;
+    }
+    
+    /* Optimize table for print */
+    table.responsive-table {
+        font-size: 10pt;
+    }
+    
+    table.responsive-table th {
+        background: #f0f0f0 !important;
+        color: black !important;
+    }
+}
+
+/* ============================================================================
+   LANDSCAPE PRINT
+   ============================================================================ */
+
+@media print and (orientation: landscape) {
+    /* Use more columns in landscape print */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    table.responsive-table {
+        font-size: 9pt;
+    }
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT (prefers-color-scheme)
+   ============================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #1a202c;
+        color: #e2e8f0;
+    }
+    
+    .card,
+    .hotel-card,
+    .stat-card {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .form-control {
+        background: #374151;
+        color: #e2e8f0;
+        border-color: #4b5563;
+    }
+    
+    .table-container {
+        background: #2d3748;
+    }
+    
+    .grid-table-cell {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+}
+
+/* ============================================================================
+   REDUCED MOTION (prefers-reduced-motion)
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================================================
+   SCREEN SIZE INDICATORS (Development Only)
+   ============================================================================ */
+
+@media (max-width: 575.98px) {
+    body::before {
+        content: "XS: < 576px";
+        display: none; /* Set to 'flex' during development */
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #ef4444;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    body::before {
+        content: "SM: 576px - 768px";
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #f59e0b;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    body::before {
+        content: "MD: 768px - 992px";
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #10b981;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    body::before {
+        content: "LG: 992px - 1200px";
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #3b82f6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    body::before {
+        content: "XL: ≥ 1200px";
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: #8b5cf6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        z-index: 9999;
+        font-weight: bold;
+        font-size: 0.875rem;
+    }
+}

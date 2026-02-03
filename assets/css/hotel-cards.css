@@ -1,0 +1,197 @@
+/**
+ * Hotel Cards Layout - CSS Grid & Flexbox
+ * Responsive grid layout for hotel listing
+ */
+
+/* ============================================================================
+   HOTEL GRID LAYOUT
+   ============================================================================ */
+
+.hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.hotel-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hotel-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+/* Hotel Card Header */
+.hotel-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hotel-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.hotel-card-id {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 0.9rem;
+}
+
+/* Hotel Card Body */
+.hotel-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.hotel-info-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+}
+
+.hotel-info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    color: #667eea;
+}
+
+.hotel-info-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.hotel-info-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.hotel-info-value {
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Hotel Stats Grid */
+.hotel-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.hotel-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.hotel-stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.hotel-stat-label {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Hotel Card Footer */
+.hotel-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.hotel-availability {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.availability-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.availability-badge.available {
+    background: #d4edda;
+    color: #155724;
+}
+
+.availability-badge.full {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.hotel-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ============================================================================
+   RESPONSIVE HOTEL GRID
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .hotels-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hotel-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .hotel-card-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .hotels-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
